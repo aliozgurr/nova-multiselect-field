@@ -111,7 +111,7 @@ class Multiselect extends Field implements RelatableField
             $model->{$attribute} = $value;
         } else {
             $value = is_null($value) ? ($this->nullable ? $value : $value = []) : $value;
-            $model->{$attribute} = ($this->saveAsJSON || is_null($value)) ? $value : json_encode($value);
+            $model->{$attribute} = (!$this->saveAsJSON || is_null($value)) ? $value : json_encode($value);
         }
     }
 
